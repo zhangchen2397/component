@@ -36,14 +36,14 @@
     padding:0 12px;
     position:relative;
     z-index:2;
-    background:transparent  url('./images/bg_list.png') no-repeat  scroll  20px 16px;
+    background:transparent  url('../images/bg_list.png') no-repeat  scroll  20px 16px;
 }
 .category .cate-menu ul li a {
     color:#555555;
     display:inline-block;
     width:145px;
     padding:8px 0 8px 25px;
-    background:transparent  url('./images/bg_list.png') repeat-x  scroll  left  -229px;
+    background:transparent  url('../images/bg_list.png') repeat-x  scroll  left  -229px;
 }
 .category .cate-menu ul li a:hover {
     text-decoration:none;
@@ -85,7 +85,7 @@
 .category .sub-cate ul li {
     float:left;
     padding:6px 20px 6px 10px;
-    background:transparent  url('./images/bg_list.png') no-repeat  scroll  left  -31px;
+    background:transparent  url('../images/bg_list.png') no-repeat  scroll  left  -31px;
     white-space:nowrap;
 }
 .category .sub-cate ul li a {
