@@ -1,4 +1,4 @@
-( function( exports ) {
+( function( win ) {
 
     function popSubMenu( config ) {
         this.defaultConfig = {
@@ -161,7 +161,11 @@
         }
     }
 
-    exports.popSubMenu = popSubMenu;
+    if ( typeof exports !== 'undefined' ) {
+        exports = popSubMenu;
+    } else {
+        win.popSubMenu = popSubMenu;
+    }
 
 } )( window );
 
