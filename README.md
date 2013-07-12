@@ -9,7 +9,7 @@
 
 这里主要介绍的是常用UI组件的实现过程，在代码中我们会推荐一些好的代码书写风格及优化技巧。代码实现过程中我们比较注重实现的思路和想法。组件的封闭采用`javascript`原生的`prototype`方式来实现继承，如果想利用`requireJs`或`seaJs`的模块化来开发的话，组件内部也做了支持。
 
-![img test](/component/pop_sub_menu/demo/images/bg_list.png)
+![img test](http://zhangchen2397.github.io/component/pop_sub_menu/demo/images/bg_list.png)
 
 ## 组件列表
 1. 
