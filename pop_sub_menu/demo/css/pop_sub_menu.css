@@ -4,8 +4,8 @@
 
 .category {
     float:left;
-    min-height:200px;
     width:193px;
+    margin:50px 0 0 20px;
     border:1px solid #E2E2E2;
     border-top:3px solid #1D9766;
     background-color:#F7F7F7;
