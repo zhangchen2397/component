@@ -1,0 +1,97 @@
+.hide {
+    display:none;
+}
+
+.category {
+    float:left;
+    width:193px;
+    margin:50px 0 0 20px;
+    border:1px solid #E2E2E2;
+    border-top:3px solid #1D9766;
+    background-color:#F7F7F7;
+    font-family:'微软雅黑';
+    position:relative;
+}
+.category a {
+    text-decoration:none;
+}
+.category h4 {
+    font-family:'微软雅黑';
+    font-size:16px;
+    color:#454545;
+    font-weight:bold;
+    background-color:#F2F2F2;
+    background-position:left  -66px;
+    background-repeat:repeat-x;
+    padding-left:15px;
+    height:33px;
+    line-height:33px;
+    border-bottom:1px solid #DADADA;
+}
+.category .cate-menu {
+    padding:8px 0;
+}
+.category .cate-menu ul li {
+    font-size:14px;
+    padding:0 12px;
+    position:relative;
+    z-index:2;
+    background:transparent  url('../images/bg_list.png') no-repeat  scroll  20px 16px;
+}
+.category .cate-menu ul li a {
+    color:#555555;
+    display:inline-block;
+    width:145px;
+    padding:8px 0 8px 25px;
+    background:transparent  url('../images/bg_list.png') repeat-x  scroll  left  -229px;
+}
+.category .cate-menu ul li a:hover {
+    text-decoration:none;
+}
+.category .cate-menu ul li.first a {
+    background:none;
+}
+.category .cate-menu ul li.cur {
+    background-color:#FFFFFF;
+    margin:0 -1px 0 -1px;
+    border:1px solid #1D9363;
+    border-right:1px solid transparent;
+    *margin-left:0;
+    background-position:20px -5px;
+}
+.category .cate-menu ul li.cur a {
+    padding-top:7px;
+    padding-bottom:7px;
+}
+.category .sub-cate {
+    width:0;
+    position:absolute;
+    left:193px;
+    z-index:1;
+    background-color:#FFFFFF;
+    overflow:hidden;
+    -webkit-transition:-webkit-transform  .2s ease-in, width .2s ease-in;
+    -moz-transition:-moz-transform  .2s ease-in, width .2s ease-in;
+    -o-transition:-o-transform  .2s ease-in, width .2s ease-in;
+    transition:transform  .2s ease-in, width .2s ease-in;
+}
+.category .sub-cate .sub-view {
+    width:325px;
+    border:1px solid #1D9363;
+}
+.category .sub-cate ul {
+    padding:10px 0 10px 20px;
+}
+.category .sub-cate ul li {
+    float:left;
+    padding:6px 20px 6px 10px;
+    background:transparent  url('../images/bg_list.png') no-repeat  scroll  left  -31px;
+    white-space:nowrap;
+}
+.category .sub-cate ul li a {
+    color:#656565;
+}
+.category .sub-cate ul li a:hover {
+    color:#26835D;
+    text-decoration:none;
+}
