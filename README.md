@@ -32,7 +32,9 @@
         |-- index.html
   |-- placeholder.js
   |-- README.md
-
+......
+README.md
+```
 ## 组件列表
 1. 二级弹出菜单组件
 2. 多级分类联动选择组件
