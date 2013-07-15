@@ -97,7 +97,7 @@
 README.md
 ```
 ## 组件列表
-1. 二级弹出菜单组件
+1. [二级弹出菜单组件](https://github.com/zhangchen2397/component/tree/master/pop_sub_menu)
 2. 多级分类联动选择组件
 3. 点击出现浮层提示组件
 4. 鼠标经过出现浮层提示组件
