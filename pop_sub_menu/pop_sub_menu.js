@@ -1,3 +1,10 @@
+/**
+ * popSubMenu ui component
+ * By: zhangchen
+ * QQ: 693575612
+ * Mail: zhangchen2397@gmail.com
+ */
+
 ( function( root ) {
     var $ = root.$;
 
