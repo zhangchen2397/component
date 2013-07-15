@@ -31,14 +31,25 @@
 	};
 ```
 
+子分类定位原理：子分类的坐标相对于el容器来定位，默认情况下子分类的top坐标值为当前父类的坐标值
+```javascript
+	cateTop //当前子分类父类的坐标值
+	me.baseTop //el元素的坐标值
 
+	subCateTop = cateTop - me.baseTop
+```
 
+当子分类的高度+子分类父类的坐标值>可视区域高度+srollHeight时，为了保证此时子分类的坐标就要坐相应调整，调整后的坐标如下：
 
+```javascript
+	excursionTop = ( cateTop + subViewItemHeight ) - ( viewHeight + scrollTop - 10 );
+	me.subCate.css( 'top', subCateTop - excursionTop );
+```
 
+## 使用
 
-
-
-
-
-
-
+```javascript
+	new popSubMenu( {
+		delayShow: 120
+	} );
+```
