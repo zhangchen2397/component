@@ -55,3 +55,5 @@
 		delayShow: 120
 	} );
 ```
+
+[查看demo](http://zhangchen2397.github.io/component/pop_sub_menu/demo/)
