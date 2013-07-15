@@ -42,13 +42,7 @@
                 el: 'category',
                 cateMenuClass: 'cate-menu',
                 subCateClass: 'sub-cate',
-                subViewClass: 'sub-view',
-
-                delayShow: 80,
-                delayHide: 0,
-
-                excursionTop: -3,
-                subViewWidth: 327
+                subViewClass: 'sub-view'
             };
 
             //将自定义配置覆盖默认配置
