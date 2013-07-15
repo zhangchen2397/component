@@ -1,6 +1,11 @@
-( function( win ) {
+( function( root ) {
+    var $ = root.$;
 
-    function popSubMenu( config ) {
+    if ( typeof require !== 'undefined' ) {
+        $ = require( 'jquery' );
+    }
+
+    var popSubMenu = function( config ) {
         this.defaultConfig = {
             el: 'category',
             cateMenuClass: 'cate-menu',
@@ -14,13 +19,13 @@
             subViewWidth: 327
         };
 
-        this.init.call( this, config );
-    }
+        this.config = $.extend( true, this.defaultConfig, config || {} );
 
-    popSubMenu.prototype = {
-        init: function( config ) {
-            this.config = $.extend( true, this.defaultConfig, config || {} );
+        this.init.call( this );
+    };
 
+    $.extend( popSubMenu.prototype, {
+        init: function() {
             this._cache();
             this._initEvent();
         },
@@ -159,13 +164,13 @@
 
             $( document ).on( 'mouseover', this.tempDocHandle );
         }
-    }
+    } );
 
     if ( typeof exports !== 'undefined' ) {
         exports = popSubMenu;
     } else {
-        win.popSubMenu = popSubMenu;
+        root.popSubMenu = popSubMenu;
     }
 
-} )( window );
+} )( this );
 
