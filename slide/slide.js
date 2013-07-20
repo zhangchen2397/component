@@ -1,8 +1,9 @@
 /**
- * popSubMenu ui component
- * By: zhangchen
- * QQ: 693575612
- * Mail: zhangchen2397@gmail.com
+ * slide ui component
+ * by: zhangchen
+ * weibo: @zhangchen2397
+ * blog: blog.huitaoba.com
+ * mail: zhangchen2397@gmail.com
  */
 
 ( function( root ) {
@@ -275,7 +276,7 @@
             imgList.each( function( index ) {
                 var item = $( this );
                 item.stop();
-                
+
                 if ( index !== me.nowPage - 1 ) {
                     item.animate( {
                         opacity: 0

@@ -22,7 +22,7 @@
 	this.defaultConfig = {
 	    el: 'category',               //容器元素id
 	    cateMenuClass: 'cate-menu',   //一级分类class名
-	    subCateClass: 'sub-cate',     //二级分类窗口class名
+	    subCateClass: 'sub-cate',     //二级分类容器class名
 	    subViewClass: 'sub-view',     //二级分类class名
 
 	    delayShow: 80,                //显示延时时间

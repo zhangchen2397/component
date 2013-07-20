@@ -1,404 +1,183 @@
+<!--
+ * slide ui component demo
+ * by: zhangchen
+ * weibo: @zhangchen2397
+ * blog: blog.huitaoba.com
+ * mail: zhangchen2397@gmail.com
+-->
+
 <!doctype html>
 <html>
 <head>
-	<title>二级弹出菜单展示组件</title>
+    <title>图片轮播组件</title>
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/pop_sub_menu.css" />
+    <link rel="stylesheet" href="./css/slide.css" />
     <script src="../../lib/jquery/jquery-1.10.1.js"></script>
+    <script src="../slide.js"></script>
 </head>
 
 <body>
-<div class="category" id="category">
-    <h4 class="bg-list">所有分类</h4>
-    <div class="cate-menu">
-        <ul>
-            <li class="first"><a href="">高等教育</a></li>
-            <li><a href="">外语学习</a></li>
-            <li><a href="">幼儿教育</a></li>
-            <li><a href="">资格考试</a></li>
-            <li><a href="">中学教育</a></li>
-            <li><a href="">历史人文</a></li>
-            <li><a href="">兴趣爱好</a></li>
-            <li><a href="">生活家居</a></li>
-            <li><a href="">职场提升</a></li>
-            <li><a href="">数码科技</a></li>
-            <li><a href="">金融理财</a></li>
-            <li><a href="">外语学习</a></li>
-            <li><a href="">幼儿教育</a></li>
-            <li><a href="">资格考试</a></li>
+<div class="demo">
+    <div id="banner1" class="clearfix">
+        <ul class="img-list">
+            <li class="cur"><a href="#" target="_blank"><img src="./images/1.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img data-slide-src="./images/2.jpg" src="./images/blank.gif" /></a></li>
+            <li><a href="#" target="_blank"><img data-slide-src="./images/3.jpg" src="./images/blank.gif" /></a></li>
+            <li><a href="#" target="_blank"><img data-slide-src="./images/4.jpg" src="./images/blank.gif" /></a></li>
+        </ul>
+        <div class="nav-btn">
+            <a href="javascript:void(0);" class="pre">上一张</a>
+            <a href="javascript:void(0);" class="next">下一张</a>
+        </div>
+    </div>
+    <script>
+        $( function() {
+            var slideIns = new slide( {
+                    el: 'banner1',
+                    playSpeed: 4000
+                } ),
+                banner = slideIns.config.el,
+                preBtn = $( banner.find( '.nav-btn a.pre' ) ),
+                nextBtn = $( banner.find( '.nav-btn a.next' ) ),
+                viewWidth = $( document ).width();
+
+            banner.on( 'mousemove', function( event ) {
+                if ( event.pageX > viewWidth / 2 ) {
+                    preBtn.css( 'display', 'none' );
+                    nextBtn.css( 'display', 'block' );
+                } else {
+                    preBtn.css( 'display', 'block' );
+                    nextBtn.css( 'display', 'none' );
+                }
+            } );
+
+            banner.on( 'mouseout', function() {
+                preBtn.css( 'display', 'none' );
+                nextBtn.css( 'display', 'none' );
+            } );
+
+            preBtn.on( 'click', function() {
+                slideIns.stopPlay();
+                slideIns.pre();
+            } );
+
+            nextBtn.on( 'click', function() {
+                slideIns.stopPlay();
+                slideIns.next();
+            } );
+
+            $( slideIns ).on( 'onSwitchBefore', function( event ) {
+                var curImg = event.curImg,
+                    lazyLoadAttr = 'data-slide-src',
+                    imgSrc = curImg.attr( lazyLoadAttr );
+
+                if ( imgSrc ) {
+                    curImg.attr( 'src', imgSrc );
+                    curImg.removeAttr( lazyLoadAttr );
+                }
+            } );
+        } );
+    </script>
+
+
+    <div id="banner2" class="clearfix banner-demo">
+        <ul class="img-list">
+            <li><a href="#" target="_blank"><img src="./images/1.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/2.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/3.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/4.jpg" /></a></li>
+        </ul>
+        <div class="nav-btn">
+            <a href="javascript:void(0);" class="pre">上一张</a>
+            <a href="javascript:void(0);" class="next">下一张</a>
+        </div>
+    </div>
+    <script>
+        $( function() {
+            var slideIns = new slide( {
+                    el: 'banner2',
+                    playSpeed: 3000,
+                    playType: 'horizontal'
+                } ),
+                banner = slideIns.config.el,
+                preBtn = $( banner.find( '.nav-btn a.pre' ) ),
+                nextBtn = $( banner.find( '.nav-btn a.next' ) ),
+                viewWidth = $( document ).width();
+
+            banner.on( 'mousemove', function( event ) {
+                if ( event.pageX > viewWidth / 2 ) {
+                    preBtn.css( 'display', 'none' );
+                    nextBtn.css( 'display', 'block' );
+                } else {
+                    preBtn.css( 'display', 'block' );
+                    nextBtn.css( 'display', 'none' );
+                }
+            } );
+
+            banner.on( 'mouseout', function() {
+                preBtn.css( 'display', 'none' );
+                nextBtn.css( 'display', 'none' );
+            } );
+
+            preBtn.on( 'click', function() {
+                slideIns.stopPlay();
+                slideIns.pre();
+            } );
+
+            nextBtn.on( 'click', function() {
+                slideIns.stopPlay();
+                slideIns.next();
+            } );
+        } );
+    </script>
+
+    <div id="banner3" class="clearfix banner-demo">
+        <ul class="img-list">
+            <li><a href="#" target="_blank"><img src="./images/1.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/2.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/3.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/4.jpg" /></a></li>
         </ul>
     </div>
+    <script>
+        $( function() {
+            new slide( {
+                el: 'banner3',
+                playSpeed: 3000,
+                playType: 'vertical'
+            } );
+        } );
+    </script>
 
-    <div class="sub-cate">
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">初中基础教育</a></li>
-                <li><a href="">高中基础教育</a></li>
-                <li><a href="">中考</a></li>
-                <li><a href="">高考</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">初中基础教育</a></li>
-                <li><a href="">高中基础教育</a></li>
-                <li><a href="">中考</a></li>
-                <li><a href="">高考</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">初中基础教育</a></li>
-                <li><a href="">高中基础教育</a></li>
-                <li><a href="">中考</a></li>
-                <li><a href="">高考</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">大学课程</a></li>
-                <li><a href="">考试指南</a></li>
-                <li><a href="">研究生考试</a></li>
-                <li><a href="">留学考试</a></li>
-                <li><a href="">公务员</a></li>
-                <li><a href="">会计</a></li>
-                <li><a href="">司法考试</a></li>
-                <li><a href="">大学课程</a></li>
-                <li><a href="">考试指南</a></li>
-                <li><a href="">研究生考试</a></li>
-                <li><a href="">留学考试</a></li>
-                <li><a href="">公务员</a></li>
-                <li><a href="">会计</a></li>
-                <li><a href="">司法考试</a></li>
-                <li><a href="">大学课程</a></li>
-                <li><a href="">考试指南</a></li>
-                <li><a href="">研究生考试</a></li>
-                <li><a href="">留学考试</a></li>
-                <li><a href="">公务员</a></li>
-                <li><a href="">会计</a></li>
-                <li><a href="">司法考试</a></li>
-                <li><a href="">大学课程</a></li>
-                <li><a href="">考试指南</a></li>
-                <li><a href="">研究生考试</a></li>
-                <li><a href="">留学考试</a></li>
-                <li><a href="">公务员</a></li>
-                <li><a href="">会计</a></li>
-                <li><a href="">司法考试</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">初中基础教育</a></li>
-                <li><a href="">高中基础教育</a></li>
-                <li><a href="">中考</a></li>
-                <li><a href="">高考</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">大学课程</a></li>
-                <li><a href="">考试指南</a></li>
-                <li><a href="">研究生考试</a></li>
-                <li><a href="">留学考试</a></li>
-                <li><a href="">公务员</a></li>
-                <li><a href="">会计</a></li>
-                <li><a href="">司法考试</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">移动互联网</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">电子商务</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">移动互联网</a></li>
-                <li><a href="">办公软件</a></li>
-                <li><a href="">程序设计</a></li>
-                <li><a href="">行业动态</a></li>
-                <li><a href="">3D设计</a></li>
-            </ul>
-        </div>
-        <div class="sub-view hide">
-            <ul class="clearfix">
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-                <li><a href="">多媒体</a></li>
-                <li><a href="">英语</a></li>
-                <li><a href="">韩语</a></li>
-                <li><a href="">日语</a></li>
-                <li><a href="">德语</a></li>
-                <li><a href="">其他</a></li>
-            </ul>
-        </div>
+    <div id="banner4" class="clearfix banner-demo">
+        <ul class="img-list">
+            <li><a href="#" target="_blank"><img src="./images/1.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/2.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/3.jpg" /></a></li>
+            <li><a href="#" target="_blank"><img src="./images/4.jpg" /></a></li>
+        </ul>
     </div>
+    <script>
+        $( function() {
+            new slide( {
+                el: 'banner4',
+                playSpeed: 3000,
+                playType: 'base'
+            } );
+        } );
+    </script>
+
 </div>
 
-<script src="../pop_sub_menu.js"></script>
 <script>
     $( function() {
-        new popSubMenu( {
-            delayShow: 80
-        } );
+        if ( window.console ) {
+            console.log( '微博：@zhangchen2397' );
+            console.log( 'blog: http://blog.huitaoba.com' );
+            console.log( 'email：zhangchen2397@gmail.com' );
+        }
     } );
 </script>
+
 </body>
 </html>
