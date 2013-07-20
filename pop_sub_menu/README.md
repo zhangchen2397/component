@@ -31,6 +31,17 @@
 	    excursionTop: -3,            //二级分类相对一级分类的偏移量
 	    subViewWidth: 327            //二级分类容器的宽度
 	};
+
+	//自定义事件
+	var popSubMenuIns = new popSubMenu();
+	
+	$( popSubMenuIns ).on( 'afterShow', function() {
+		//code here
+	} );
+
+	$( popSubMenuIns ).on( 'afterHide', function() {
+		//code here
+	} );
 ```
 
 子分类定位原理：子分类的坐标相对于el容器来定位，默认情况下子分类的top坐标值为当前父类的坐标值
