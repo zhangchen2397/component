@@ -101,7 +101,7 @@ README.md
 2. 多级分类联动选择组件
 3. 点击出现浮层提示组件
 4. 鼠标经过出现浮层提示组件
-5. 图片轮播组件
+5. [图片轮播组件](https://github.com/zhangchen2397/component/tree/master/slide)
 6. 图片延时加载组件
 7. 表单验证组件
 8. placeholder组件
