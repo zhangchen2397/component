@@ -1,0 +1,21 @@
+.demo {
+	width:980px;
+	margin:20px auto;
+	border:1px solid red;
+	height:2000px;
+}
+
+.goto-top {
+	width:25px;
+	height:25px;
+	text-align:center;
+	padding:10px;
+	font-size:12px;
+	border:1px solid #EDDA9D;
+	background-color:#EDE6CE;
+}
+
+.goto-top a {
+	color:#EDC02B;
+	text-decoration:none;
+}

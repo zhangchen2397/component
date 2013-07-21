@@ -1,0 +1,52 @@
+<!--
+ * gotoTop ui component demo
+ * by: zhangchen
+ * weibo: @zhangchen2397
+ * blog: blog.huitaoba.com
+ * mail: zhangchen2397@gmail.com
+-->
+
+<!doctype html>
+<html>
+<head>
+    <title>返回顶部组件</title>
+    <link rel="stylesheet" href="./css/goto_top.css" />
+    <script src="../../lib/jquery/jquery-1.10.1.js"></script>
+    <script src="../goto_top.js"></script>
+</head>
+
+<body>
+<div class="demo">
+
+</div>
+
+<script>
+    $( function() {
+        //相对于窗口的左侧对齐
+        new gotoTop( {
+            containerWidth: 980,
+            excursion: { 
+                "left": 1, 
+                "bottom": 100
+            }
+        } );
+
+        //相对于body右侧对齐
+        //new gotoTop();
+    } );
+</script>
+
+<script>
+    $( function() {
+        if ( window.console ) {
+            console.log( '----------------------------------' );
+            console.log( '1. 微博：@zhangchen2397' );
+            console.log( '2. blog: http://blog.huitaoba.com' );
+            console.log( '3. email：zhangchen2397@gmail.com' );
+            console.log( '----------------------------------' );
+        }
+    } );
+</script>
+
+</body>
+</html>
