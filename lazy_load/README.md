@@ -10,7 +10,7 @@
 
 图片延时加载组件主要是为了提高页面的性能，加快页面可视区域中图片的加载速度，当页面中存在大量图片时，采用此组件非常适合。其基本原理是，将图片的真实路径不直接写在`src`上，先赋值给一个自定义属性上，如`data-src`，当用户滚动到该图片的可视区域时，通过`data-src`取出图片的真实路径，替换`src`的1X1px的透明小图。
 
-** html结构 **
+html结构：
 ```html
 <img data-src="./images/1.jpg" src="./images/blank.gif" />
 ```
@@ -35,7 +35,10 @@ lazyLoadIns.on( 'afterLoaded', function( data ) {
 } );
 ```
 
-根据以上的实现原理，主要需要计算可视区域内图片，当图片的上边缘的坐标小于scrollTop + viewHeight且图片的下边缘的坐标大于scrollTop时，刚显示该图片。实现代码如下：
+默认情况下，当图片处于可视区域时，采用的是`jQuery`的.fadeIn( 'slow' )来显示图片，如果配置了loadedCallback，则采用用户自定义配置的方式显示图片。
+
+
+根据以上的实现原理，主要需要计算可视区域内图片，当图片的上边缘的坐标小于scrollTop + viewHeight且图片的下边缘的坐标大于scrollTop时，刚显示该图片（这里只考虑了垂直方向上的计算，如果有水平方向上的滚动，也需要将水平方向上的坐标计算考虑进去）。实现代码如下：
 
 ```javascript
 $.each( this.lazyImgs, function( index, item ) {
