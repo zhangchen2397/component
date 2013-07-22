@@ -1,11 +1,11 @@
-# 图片延时加载组件
+# 返回顶部组件
 
 ## 组件说明
 
 先来看看demo
 
-1. [demo1，相对于指定容器左侧定位](http://zhangchen2397.github.io/component/goto_top/demo/))
-2. [demo2，相对于body右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html))
+1. [demo1，相对于指定容器左侧定位](http://zhangchen2397.github.io/component/goto_top/demo/)
+2. [demo2，相对于body右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
 
 返回顶部组件主要是当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。
 
