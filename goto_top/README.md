@@ -4,16 +4,19 @@
 
 先来看看demo
 
-1. [demo1](http://wenku.baidu.com/pay/index)
-2. [demo2](http://wenku.baidu.com/vip/index)
-3. [demo3](http://wenku.baidu.com/vip/privilege)
+1. [demo1，相对于指定容器左侧定位](http://zhangchen2397.github.io/component/goto_top/demo/))
+2. [demo2，相对于body右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html))
 
-图片延时加载组件主要是为了提高页面的性能，加快页面可视区域中图片的加载速度，当页面中存在大量图片时，采用此组件非常适合。其基本原理是，将图片的真实路径不直接写在`src`上，先赋值给一个自定义属性上，如`data-src`，当用户滚动到该图片的可视区域时，通过`data-src`取出图片的真实路径，替换`src`的1X1px的透明小图。
+返回顶部组件主要是当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。
 
-html结构：
-```html
-<img data-src="./images/1.jpg" src="./images/blank.gif" />
-```
+有另外一种情况可能还需要处理一下，很多网站的footer区域是通栏的色块，当页面滚动到最底部时，返回顶部的按钮就直接固定在了footer区域上，影响整个页面的UE效果，这样就需要在页面滚动到指定的高度后，重新动态计算返回顶部按钮的`bottom`坐标，保证其随滚动条一起滚动，这种情况的示例如下：
+
+1. [文库首页](http://wenku.baidu.com)
+2. [美团网首页](http://www.meituan.com)
+
+该组件的功能虽然比较简单，这种小细节的处理我们还是需要注意，保证最佳的用户体验。
+
+**html结构**：通过组件内部动态创建。
 
 ## 实现过程
 

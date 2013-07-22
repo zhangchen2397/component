@@ -27,7 +27,7 @@
             showBtnScrollHeight: 100,   //显示按钮的最小scollTop值
             minViewWidth: 1024,         //最小可视宽度
             excursion: { 
-                "bottom": 100,          //相对于body的底偏移量
+                "bottom": 20,           //相对于body的底偏移量
                 "left": 12,             //相对于容器的左偏移量
                 "right": 20             //相对于body的右偏移量
             }
