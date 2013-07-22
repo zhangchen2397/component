@@ -1,5 +1,5 @@
 /**
- * gotoTop ui component
+ * elFix ui component
  * by: zhangchen
  * weibo: @zhangchen2397
  * blog: blog.huitaoba.com
