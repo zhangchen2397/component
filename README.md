@@ -106,7 +106,7 @@ README.md
 7. 表单验证组件
 8. placeholder组件
 9. 元素固定组件
-10. 返回顶部组件
+10. [返回顶部组件](https://github.com/zhangchen2397/component/tree/master/goto_top)
 11. 图片遮罩、高亮组件
 12. 拖拽排序组件
 13. 对话框组件

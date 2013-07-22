@@ -4,8 +4,8 @@
 
 先来看看demo
 
-1. [查看demo1：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
-2. [查看demo2：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
+1. [查看demo1：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
+2. [查看demo2：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
 
 返回顶部组件主要用于当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。这里还有两个小细节需要注意：
 
@@ -102,5 +102,5 @@ new gotoTop( {
 } );
 ```
 
-1. [查看demo1：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
-2. [查看demo2：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
+1. [查看demo1：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
+2. [查看demo2：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
