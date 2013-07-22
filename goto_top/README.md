@@ -29,7 +29,7 @@ this.defaultConfig = {
     containerWidth: 0,          //容器宽度(如果为0，则相对于body定位)
     showBtnScrollHeight: 100,   //显示按钮的最小scollTop值
     minViewWidth: 1024,         //最小可视宽度，用于改变leftP的坐标
-    footerEl: null,             //如定了footerEl，页面滚动到底部时，返回顶部按钮会随页面一起滚动
+    footer: null,               //如定了footerEl，页面滚动到底部时，返回顶部按钮会随页面一起滚动
     excursion: { 
         "bottom": 20,           //相对于body的底偏移量
         "left": 12,             //相对于容器的左偏移量
