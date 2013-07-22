@@ -8,9 +8,11 @@
 
 2. [查看demo2：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
 
-返回顶部组件主要用于当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。
+返回顶部组件主要用于当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。这里还有两个小细节需要注意：
 
-有另外一种情况可能还需要处理一下，很多网站的footer区域是通栏的色块，当页面滚动到最底部时，返回顶部的按钮就直接固定在了footer区域上，影响整个页面的UE效果，这样就需要在页面滚动到指定的高度后，重新动态计算返回顶部按钮的`bottom`坐标，保证其随滚动条一起滚动，这种情况的示例如下：
+1. 当页面的可视宽度小于配置的宽度时，返回顶部按钮的`left`坐标做了另外处理，直接向最右侧偏移70px处理，保证其按钮可见。
+
+2. 很多网站的footer区域是通栏的色块，当页面滚动到最底部时，返回顶部的按钮就直接固定在了footer区域上，影响整个页面的UE效果，这样就需要在页面滚动到指定的高度后，重新动态计算返回顶部按钮的`bottom`坐标，保证其随滚动条一起滚动，这种情况的示例如下：
 
 1. [文库首页](http://wenku.baidu.com)
 2. [美团网首页](http://www.meituan.com)
@@ -45,7 +47,37 @@ gotoTopIns.on( 'afterScrollTop', function( data ) {
 } );
 ```
 
-**实现思路**：这里主要通过计算
+**实现思路**：对于支持fix定位的浏览器，直接采用fix定位即可，否则采用`position:absolute`定位，动态计算`top`坐标，同时注意有footer情况的处理，代码如下：
+
+```javascript
+if ( typeof document.body.style.maxHeight === 'undefined' )  {
+    if ( footer && totalHeight > footerPosY ) {
+        button.css( {
+            'position': 'absolute',
+            'top': totalHeight + footerPosY - excursion.bottom
+        } );
+    } else {
+        button.css( {
+            'position': 'absolute',
+            'top': totalHeight - excursion.bottom
+        } );
+    }
+} else {
+    if ( footer && totalHeight > footerPosY ) {
+        button.css( {
+            'position': 'fixed',
+            'bottom': totalHeight - footerPosY + excursion.bottom
+        } );
+    } else {
+        button.css( {
+            'position': 'fixed',
+            'bottom': excursion.bottom
+        } );
+    }
+}
+```
+
+
 
 
 ## 使用
@@ -72,5 +104,4 @@ new gotoTop( {
 ```
 
 1. [查看demo1：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
-
 2. [查看demo2：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
