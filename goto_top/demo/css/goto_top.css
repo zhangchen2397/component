@@ -12,11 +12,16 @@
 	padding:10px;
 	font-size:12px;
 	cursor:pointer;
-	border:1px solid #EDDA9D;
-	background-color:#EDE6CE;
+	border-radius:3px;
+	background-color:#8FD8D9;
 }
 
 .goto-top a {
-	color:#EDC02B;
+	color:#FFFFFF;
 	text-decoration:none;
+}
+
+#footer {
+	height:200px;
+	background-color:#E8E8E8;
 }

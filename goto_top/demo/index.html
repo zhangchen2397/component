@@ -10,29 +10,22 @@
 <html>
 <head>
     <title>返回顶部组件</title>
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/goto_top.css" />
     <script src="../../lib/jquery/jquery-1.10.1.js"></script>
     <script src="../goto_top.js"></script>
 </head>
 
 <body>
-<div class="demo">
+<div class="demo"></div>
 
-</div>
+<div id="footer"></div>
 
 <script>
     $( function() {
-        // //相对于窗口的左侧对齐
-        // new gotoTop( {
-        //     containerWidth: 980,
-        //     excursion: { 
-        //         "left": 1, 
-        //         "bottom": 100
-        //     }
-        // } );
-
-        //相对于body右侧对齐
-        new gotoTop();
+        new gotoTop( {
+            footer: 'footer'
+        } );
     } );
 </script>
 

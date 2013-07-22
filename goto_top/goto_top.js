@@ -25,7 +25,8 @@
             el: 'goto-top',
             containerWidth: 0,          //容器宽度(如果为0，则相对于body定位)
             showBtnScrollHeight: 100,   //显示按钮的最小scollTop值
-            minViewWidth: 1024,         //最小可视宽度
+            minViewWidth: 1024,         //最小可视宽度，用于改变leftP的坐标
+            footer: null,               //如定了footerEl，页面滚动到底部时，返回顶部按钮会随页面一起滚动
             excursion: { 
                 "bottom": 20,           //相对于body的底偏移量
                 "left": 12,             //相对于容器的左偏移量
@@ -52,6 +53,7 @@
             $( document.body ).append( $( tpl ) );
 
             this.button = $( '#' + config.el );
+            this.footer = ( $.type( config.footer ) === 'string' ) ? $( '#' + config.footer ) : config.footer;
         },
         
         _initEvent: function(){
@@ -114,20 +116,43 @@
             var me = this,
                 config = this.config,
                 button = this.button,
+                footer = this.footer,
                 excursion = config.excursion,
-                viewportHeight = $( window ).height();
+                win = $( window ),
+                viewportHeight = win.height(),
+                scrollTop = win.scrollTop(),
+                totalHeight = viewportHeight + scrollTop,
+                footerPosY = 0;
 
+            if ( footer ) {
+                footerPosY = footer.offset().top;
+            }
+                
             //如果是ie6
             if ( typeof document.body.style.maxHeight === 'undefined' )  {
-                button.css( {
-                    'position': 'absolute',
-                    'top': viewportHeight + $( window ).scrollTop() - excursion.bottom
-                } );
+                if ( footer && totalHeight > footerPosY ) {
+                    button.css( {
+                        'position': 'absolute',
+                        'top': totalHeight + footerPosY - excursion.bottom
+                    } );
+                } else {
+                    button.css( {
+                        'position': 'absolute',
+                        'top': totalHeight - excursion.bottom
+                    } );
+                }
             } else {
-                button.css( {
-                    'position': 'fixed',
-                    'bottom': excursion.bottom
-                } );
+                if ( footer && totalHeight > footerPosY ) {
+                    button.css( {
+                        'position': 'fixed',
+                        'bottom': totalHeight - footerPosY + excursion.bottom
+                    } );
+                } else {
+                    button.css( {
+                        'position': 'fixed',
+                        'bottom': excursion.bottom
+                    } );
+                }
             }
         }
     } );
