@@ -5,7 +5,6 @@
 先来看看demo
 
 1. [查看demo1：相对于body的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/demo2.html)
-
 2. [查看demo2：相对于容器的右下角定位](http://zhangchen2397.github.io/component/goto_top/demo/)
 
 返回顶部组件主要用于当页面较长时，方便用户返回页面顶部的一个快捷操作，由于ie6不支持fix定位，所以针对ie6作特别的处理，采用`position:absolute`，同时监听`scroll`事件，动态获取`top`坐标。这里还有两个小细节需要注意：
@@ -14,8 +13,8 @@
 
 2. 很多网站的footer区域是通栏的色块，当页面滚动到最底部时，返回顶部的按钮就直接固定在了footer区域上，影响整个页面的UE效果，这样就需要在页面滚动到指定的高度后，重新动态计算返回顶部按钮的`bottom`坐标，保证其随滚动条一起滚动，这种情况的示例如下：
 
-1. [文库首页](http://wenku.baidu.com)
-2. [美团网首页](http://www.meituan.com)
+	1. [文库首页](http://wenku.baidu.com)
+	2. [美团网首页](http://www.meituan.com)
 
 该组件的功能虽然比较简单，这种小细节的处理我们还是需要注意，保证最佳的用户体验。
 
