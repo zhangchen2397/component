@@ -9,23 +9,28 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>返回顶部组件</title>
+    <title>元素滚动固定组件</title>
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/goto_top.css" />
+    <link rel="stylesheet" href="./css/el_fix.css" />
     <script src="../../lib/jquery/jquery-1.10.1.js"></script>
-    <script src="../goto_top.js"></script>
+    <script src="../el_fix.js"></script>
 </head>
 
 <body>
-<div class="demo"></div>
 
-<div id="footer"></div>
+<div class="demo">
+    <div class="header">
+        <h1>元素滚动固定组件</h1>
+    </div>
+
+    <div class="menu" id="fix-con">
+        我是固定的元素
+    </div>
+</div>
 
 <script>
     $( function() {
-        new gotoTop( {
-            footer: 'footer'
-        } );
+        new elFix();
     } );
 </script>
 

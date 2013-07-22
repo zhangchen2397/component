@@ -38,7 +38,7 @@ this.defaultConfig = {
 };
 
 //自定义事件
-var gotoTopIns = new goto_top();
+var gotoTopIns = new gotoTop();
 
 //返回到页面顶部时的事件监听
 gotoTopIns.on( 'afterScrollTop', function( data ) {
