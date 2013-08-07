@@ -1,0 +1,81 @@
+<!doctype html>
+<!--
+ * clickShow ui component demo
+ * by: zhangchen
+ * weibo: @zhangchen2397
+ * blog: blog.huitaoba.com
+ * mail: zhangchen2397@gmail.com
+-->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>点击出现提示组件</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/click_show.css" />
+    <script src="../../lib/jquery/jquery-1.10.1.js"></script>
+    <script src="../click_show.js"></script>
+</head>
+
+<body>
+
+<div class="demo">
+    <ul class="clearfix">
+        <li id="t-tip1">向上提示<span>123</span></li>
+        <li id="t-tip2">向下提示</li>
+        <li>向左提示</li>
+        <li>向右提示</li>
+    </ul>
+</div>
+
+<div class="tip-t tip-con" id="e-tip1">
+    <a href="javascript:void(0);" class="close-btn">关闭</a>
+    <p>图片轮播组件在页面中是最常见的一类UI组件了，图片间的切换方式主要包括：基本的显示/隐藏切换，水平切换，垂直切换，渐隐渐现四种切换方式。</p>
+</div>
+
+<div class="tip-b tip-con" id="e-tip2">
+    <a href="javascript:void(0);" class="close-btn">关闭</a>
+    <p>图片轮播组件在页面中是最常见的一类UI组件了，图片间的切换方式主要包括：基本的显示/隐藏切换，水平切换，垂直切换，渐隐渐现四种切换方式。本UI组件默认已经支持这四种切换方式</p>
+</div>
+
+<div class="tip-l tip-con">
+    <a href="javascript:void(0);" class="close-btn">关闭</a>
+    <p>图片轮播组件在页面中是最常见的一类UI组件了</p>
+</div>
+
+<div class="tip-r tip-con">
+    <a href="javascript:void(0);" class="close-btn">关闭</a>
+    <p>图片轮播组件在页面中是最常见的一类UI组件了，图片间的切换方式主要包括：基本的显示/隐藏切换，水平切换，垂直切换，渐隐渐现四种切换方式。</p>
+</div>
+
+<script>
+    $( function() {
+       var a = new clickShow( {
+            trigger: '#t-tip1',
+            element: '#e-tip1'
+       } );
+
+       var b = new clickShow( {
+            trigger: '#t-tip2',
+            element: '#e-tip2',
+            effect: 'fade',
+            isNeedIframe: true
+       } );
+
+       console.log( a );
+    } );
+</script>
+
+<script>
+    $( function() {
+        if ( window.console ) {
+            console.log( '----------------------------------' );
+            console.log( '1. 微博：@zhangchen2397' );
+            console.log( '2. blog: http://blog.huitaoba.com' );
+            console.log( '3. email：zhangchen2397@gmail.com' );
+            console.log( '----------------------------------' );
+        }
+    } );
+</script>
+
+</body>
+</html>

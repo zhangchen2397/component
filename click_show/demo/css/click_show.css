@@ -1,0 +1,36 @@
+.demo {
+	width:980px;
+	height:500px;
+	margin:30px auto;
+	padding:100px;
+	background-color:#F8F8F8;
+	border:1px solid #DDDDDD;
+}
+
+.demo ul li {
+	float:left;
+	margin:30px;
+	cursor:pointer;
+	color:#0088CC;
+}
+
+.demo ul li:hover {
+	text-decoration:underline;
+}
+
+.tip-con {
+	width:200px;
+	z-index:10;
+	padding:10px;
+	border:1px solid red;
+	background-color:#FFFFFF;
+}
+
+.tip-con .close-btn {
+	float:right;
+}
+
+.tip-con p {
+	clear:both;
+	padding-top:3px;
+}
