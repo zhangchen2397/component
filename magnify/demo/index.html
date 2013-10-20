@@ -3,25 +3,79 @@
  * lazyLoad ui component demo
  * by: zhangchen
  * weibo: @zhangchen2397
- * blog: blog.huitaoba.com
+ * blog: http://f2edev.sinaapp.com
  * mail: zhangchen2397@gmail.com
 -->
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>图片延时加载组件</title>
-    <link rel="stylesheet" href="./css/lazy_load.css" />
+    <title>图片放大镜效果</title>
+    <link rel="stylesheet" href="./css/magnify.css" />
     <script src="../../lib/jquery/jquery-1.10.1.js"></script>
-    <script src="../lazy_load.js"></script>
+    <script src="../magnify.js"></script>
+
+    <style>
+        .small-pic {
+            position:relative;
+            width:200px;
+            height:200px;
+        }
+        .small-pic .mask {
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            z-index:2;
+            cursor:move;
+        }
+        .small-pic .pointer {
+            position:absolute;
+            display:none;
+            top:0;
+            left:0;
+            width:80px;
+            height:80px;
+            background-color:#2A9928;
+            opacity:0.3;
+            filter:alpha(opacity:30);
+        }
+
+        .zoom-wrap {
+            position:absolute;
+            width:400px;
+            height:400px;
+            overflow:hidden;
+            top:10px;
+            left:220px;
+            display:none;
+        }
+
+        .zoom-wrap img {
+            position:absolute;
+        }
+    </style>
 </head>
 
 <body>
-<div class="demo">
-    <h1>点击查看以下示例</h1>
-    <h2><a href="http://wenku.baidu.com/pay/index" target="_blank">文库付费频道</a></h2>
-    <h2><a href="http://wenku.baidu.com/vip/index" target="_blank">文库会员专区</a></h2>
-    <h2><a href="http://wenku.baidu.com/vip/privilege" target="_blank">文库会员特权</a></h2>
+
+<div id="magnify">
+    <div class="small-pic">
+        <div class="mask"></div>
+        <div class="pointer"></div>
+        <img src="./images/gyy_small.jpg" />
+    </div>
+
+    <div class="zoom-wrap">
+        <img src="./images/gyy_big.jpg" />
+    </div>
 </div>
+
+<script>
+    $( function() {
+        new magnify();
+    } );
+</script>
 
 <script>
     $( function() {

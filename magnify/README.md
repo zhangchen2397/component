@@ -1,14 +1,12 @@
-# 图片延时加载组件
+# 图片放大镜组件
 
 ## 组件说明
 
 先来看看demo
 
-1. [demo1](http://wenku.baidu.com/pay/index)
-2. [demo2](http://wenku.baidu.com/vip/index)
-3. [demo3](http://wenku.baidu.com/vip/privilege)
+1. [demo1](http://zhangchen2397.github.io/component/magnify/demo/)
 
-图片延时加载组件主要是为了提高页面的性能，加快页面可视区域中图片的加载速度，当页面中存在大量图片时，采用此组件非常适合。其基本原理是，将图片的真实路径不直接写在`src`上，先赋值给一个自定义属性上，如`data-src`，当用户滚动到该图片的可视区域时，通过`data-src`取出图片的真实路径，替换`src`的1X1px的透明小图。
+图片放大镜组件组件的应用场景非常多，
 
 html结构：
 ```html

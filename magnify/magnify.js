@@ -15,9 +15,10 @@
 
     var magnify = function( config ) {
         this.defaultConfig = {
-            lazyLoadAttr: 'data-src',
-            preloadHeight: 0,
-            loadedCallback: null
+            el: 'magnify',
+            maskClass: '.mask',
+            pointerClass: '.pointer',
+            zoomWrapClass: '.zoom-wrap'
         };
 
         this.config = $.extend( true, this.defaultConfig, config || {} );
@@ -33,97 +34,109 @@
 
         _initEvent: function() {
             var me = this,
-                config = this.config;
+                config = this.config,
+                mask = this.mask;
 
-            this.acitonLazy = $.proxy( me._lazy, me );
-
-            $( window ).on( 'scroll', me.acitonLazy );
-            $( window ).on( 'resize', me.acitonLazy );
-            $( window ).on( 'load', me.acitonLazy );
-
-            $( me ).on( 'afterLoaded', function( event ) {
-                me._afterLoaded( event.img );
-            } );
+            mask.on( 'mouseenter', $.proxy( this._enterHandle, this ) );
+            mask.on( 'mouseleave', $.proxy( this._leaveHandle, this ) );
+            mask.on( 'mousemove', $.proxy( this._moveHandle, this ) );
         },
 
         _cache: function() {
-            this.lazyImgs = this._getLazyImgs();
-            this.lazyImgsLen = this.lazyImgs.length;
-            this.acitonLazy = null;
-        },
-
-        _getLazyImgs: function() {
-            var me = this,
-                config = this.config,
-                lazyImgs = [],
-                item = null;
-
-            $( 'img' ).each( function( index ) {
-                item = $( this );
-                if ( item.attr( config.lazyLoadAttr ) ) {
-                    lazyImgs.push( item );
-                }
-            } );
-
-            return lazyImgs;
-        },
-
-        _lazy: function() {
-            var me = this,
-                config = this.config,
-                lazyLoadAttr = config.lazyLoadAttr,
-                preloadHeight = config.preloadHeight,
-
-                win = $( window ),
-                scrollTop = win.scrollTop(),
-                clientHeight = win.innerHeight(),
-                viewOffset = scrollTop + clientHeight + preloadHeight,
-                scrollOffset = scrollTop - preloadHeight;
-
-
-            $.each( this.lazyImgs, function( index, item ) {
-                var itemPosY = item.offset().top,
-                    itemPosDepY = itemPosY + item.innerHeight(),
-                    imgSrc = item.attr( lazyLoadAttr );
-
-                if ( itemPosY < viewOffset && itemPosDepY > scrollOffset && imgSrc ) {
-                    item.css( 'display', 'none' );
-
-                    item.attr( 'src', imgSrc );
-                    item.removeAttr( lazyLoadAttr );
-                    me.lazyImgsLen--;
-
-                    $( me ).trigger( {
-                        type: 'afterLoaded',
-                        img: item
-                    } );
-                }
-            } );
-
-            me.lazyImgsLen || me._dispose();
-        },
-
-        _dispose: function() {
-            $( window ).off( 'scroll', this.acitonLazy );
-            $( window ).off( 'resize', this.acitonLazy );
-        },
-
-        _afterLoaded: function( img ) {
             var me = this,
                 config = this.config;
 
-            if ( $.isFunction( config.loadedCallback ) ) {
-                config.loadedCallback( img );
-            } else {
-                img.fadeIn( 'slow' );
+            this.el = ( $.type( config.el ) === 'string' ) ? $( '#' + config.el ) : config.el;
+            this.mask = this.el.find( config.maskClass );
+            this.pointer = this.el.find( config.pointerClass );
+            this.zoomWrap = this.el.find( config.zoomWrapClass );
+            this.bigImg = this.el.find( config.zoomWrapClass + ' img' );
+        },
+
+        _enterHandle: function( event ) {
+            var me = this,
+                config = this.config;
+
+            this.zoomWrap.show();
+            this.pointer.show();
+        },
+
+        _leaveHandle: function( event ) {
+            var me = this,
+                config = this.config;
+
+            this.zoomWrap.hide();
+            this.pointer.hide();
+        },
+
+        _moveHandle: function( event ) {
+            var me = this,
+                config = this.config,
+                pointerPos = {};
+
+            pointerPos = me._calPointerPos( event );
+            me._calBigPos( pointerPos );
+        },
+
+        _calPointerPos: function( event ) {
+            var me = this,
+                mask = this.mask,
+                pointer = this.pointer,
+                maskPos = mask.offset(),
+
+                maskWidth = mask.width(),
+                maskHeight = mask.height(),
+                pointerWidth = pointer.width(),
+                pointerHeight = pointer.height(),
+
+                posL = event.pageX - maskPos.left - pointerWidth / 2,
+                posT = event.pageY - maskPos.top - pointerHeight / 2;
+
+            if ( posL < 0 ) {
+                posL = 0;
+            } else if ( posL > maskWidth - pointerWidth ) {
+                posL = maskWidth - pointerWidth
             }
+
+            if ( posT < 0 ) {
+                posT = 0;
+            } else if ( posT > maskHeight - pointerHeight ) {
+                posT = maskHeight - pointerHeight
+            }
+
+            pointer.css( {
+                left: posL,
+                top: posT
+            } );
+
+            return {
+                left: posL,
+                top: posT
+            }
+        },
+
+        _calBigPos: function( pointerPos ) {
+            var me = this,
+                config = this.config,
+                mask = this.mask,
+                pointer = this.pointer,
+                zoomWrap = this.zoomWrap,
+                bigImg = this.bigImg,
+
+                percentX = pointerPos.left / ( mask.width() - pointer.width() ),
+                percentY = pointerPos.top / ( mask.height() - pointer.height() );
+
+            bigImg.css( {
+                left: -percentX * ( bigImg.width() - zoomWrap.width() ),
+                top: -percentY * ( bigImg.height() - zoomWrap.height() )
+            } );
         }
     } );
 
     if ( typeof exports !== 'undefined' ) {
-        exports = lazyLoad;
+        exports = magnify;
     } else {
-        root.lazyLoad = lazyLoad;
+        root.magnify = magnify;
     }
 
 } )( this );
