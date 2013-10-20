@@ -2,9 +2,8 @@
 
 ## 组件说明
 
-先来看看demo
+先来看看[demo](http://zhangchen2397.github.io/component/magnify/demo/)
 
-[demo](http://zhangchen2397.github.io/component/magnify/demo/)
 
 图片放大镜组件组件的应用场景非常多，尤其在电子商务网站中，该效果用于查看商品详细细节非常适应，在项目中正好也有这样一个需求，于是也尝试写了一个，实现的原理也很简单。
 
