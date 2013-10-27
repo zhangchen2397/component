@@ -112,4 +112,4 @@ README.md
 13. 对话框组件
 14. 旋转木马组件
 15. 自动提示组件
-16. [图片放大镜组件](http://zhangchen2397.github.io/component/magnify/demo)
+16. [图片放大镜组件](https://github.com/zhangchen2397/component/tree/master/magnify)
